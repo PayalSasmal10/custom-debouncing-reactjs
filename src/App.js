@@ -4,15 +4,25 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import debounce from "lodash/debounce";
 
 function App() {
+  const [loading, setLoading] = useState(false);
+  const [options, setOptions] = useState([])
   const [inputChange, setInputChange] = useState();
+
+  const getSuggestions = async(word) => {
+    if(word) {
+      setLoading(true);
+      // let response = 
+    }
+  };
 
   const sendRequest = useCallback((value) => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((res) => {
+        console.log("res", res);
         return res.json();
       })
       .then((result) => {
-        // console.log(result);
+        console.log(result, value);
         return [result, value];
       });
   }, []);
